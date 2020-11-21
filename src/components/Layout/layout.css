@@ -1,0 +1,87 @@
+.headbanner {
+  padding: 0;
+}
+
+.navbar {
+  background-color: #343a40;
+  color: #ffffff;
+}
+
+.navbar a {
+  color: #ffffff;
+}
+/*
+body {
+font-family: "Quicksand", Arial, Helvetica, sans-serif;
+}*/
+.navbar-brand {
+  font-size: 1em;
+}
+.navcontainer {
+  background-color: #343a40;
+}
+.nav-item {
+  padding: 4px 10px;
+}
+.nav-item a {
+  color: #aaaaaa;
+}
+.nav-item a:hover {
+  text-decoration: none;
+  color: #eeeeee;
+}
+div.carousel-item img {
+  width: 100%;
+  height: auto;
+}
+
+/*
+images thumb pages
+}*/
+div.itembox {
+  text-align: left;
+  font-size: 12px;
+  margin-bottom: 15px;
+  position: relative;
+}
+div.itembox p {
+  margin: 1px;
+  padding: 1px;
+}
+div.textbox {
+  position: relative;
+}
+div.enlarge {
+  text-align: right;
+  font-size: 10px;
+}
+h4 {
+  font-size: 1.2em;
+  font-style: italic;
+  margin-bottom: 2px;
+  padding-left: 0;
+  padding-top: 0;
+}
+
+div.itemcell {
+  padding-left: 4px;
+  padding-right: 4px;
+}
+p.loading {
+  text-align: center;
+}
+p.cv {
+  color: #333333;
+  font-size: 0.8rem;
+}
+ul.cv li {
+  list-style-type: none;
+  color: #333333;
+  font-size: 0.8rem;
+}
+
+@media only screen and (min-width: 650px) {
+  div.itembox {
+    padding: 15px;
+  }
+}
