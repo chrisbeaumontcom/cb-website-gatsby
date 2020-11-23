@@ -1,7 +1,7 @@
 import React from "react"
 import { Link } from "gatsby"
-import banner02 from "./img/banner02lemons.jpg"
-import insta from "./img/soc-insta-30.png"
+import banner02 from "../../assets/img/layout/banner02lemons.jpg"
+import insta from "../../assets/img/soc-insta-30.png"
 import styled from "styled-components"
 import { Container,Row } from "react-bootstrap"
 

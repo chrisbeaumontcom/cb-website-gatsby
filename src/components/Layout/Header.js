@@ -1,10 +1,10 @@
 import React from "react";
 import { Link } from "gatsby";
 import { Container, Row, Carousel } from "react-bootstrap";
-import banner01 from "./img/banner01zucchinis.jpg";
-import banner02 from "./img/banner02lemons.jpg";
-import banner03 from "./img/banner03artichokes.jpg";
-import banner04 from "./img/banner04cherries.jpg";
+import banner01 from "../../assets/img/layout/banner01zucchinis.jpg";
+import banner02 from "../../assets/img/layout/banner02lemons.jpg";
+import banner03 from "../../assets/img/layout/banner03artichokes.jpg";
+import banner04 from "../../assets/img/layout/banner04cherries.jpg";
 import styled from 'styled-components';
 
 const HeaderStyles = styled.div`
