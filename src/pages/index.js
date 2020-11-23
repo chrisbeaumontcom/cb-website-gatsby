@@ -4,6 +4,11 @@ import  PortableText from '@sanity/block-content-to-react'
 import SEO from "../components/seo"
 import { Row } from "react-bootstrap"
 import Img from 'gatsby-image'
+import styled from 'styled-components';
+
+const HomeStyles = styled.div`
+  div.row{margin-bottom: 30px;}
+`;
 
 const serializers = {
   types: {
@@ -22,22 +27,26 @@ export default function IndexPage ({data}) {
   return (
     <>
       <SEO title="Welcome" />
-      <h1>Hi people</h1>
-    {itemlist.map((el) => (
-      <Row key={el.id}>
-        <div className="col-lg-3 col-md-3 col-sm-12 col-xs-12">
-          <Img fluid={el.image.asset.fluid} alt={el.title} />
+      <HomeStyles>
+
+        <div>
+          <h2>Hi people</h2>
         </div>
-        <div className="col-lg-9 col-md-9 col-sm-12 col-xs-12">
-            <h3 className="title">
-            {el.title}
-            </h3>
-            <PortableText blocks={el._rawContent} serializers={serializers} />
-        </div>
-        
-       </Row>
-    ))}
-   
+
+        {itemlist.map((el) => (
+          <Row key={el.id}>
+            <div className="col-lg-3 col-md-3 col-sm-12 col-xs-12">
+              <Img fluid={el.image.asset.fluid} alt={el.title} />
+            </div>
+            <div className="col-lg-9 col-md-9 col-sm-12 col-xs-12">
+                <h3 className="title">
+                {el.title}
+                </h3>
+                <PortableText blocks={el._rawContent} serializers={serializers} />
+            </div>
+          </Row>
+        ))}
+      </HomeStyles>
     </>
   )
 }

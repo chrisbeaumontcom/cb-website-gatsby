@@ -5,6 +5,9 @@ const GlobalStyles = createGlobalStyle`
 body {
   font-family: Quicksand, Arial, Helvetica, sans-serif;
 }
+h2 {
+  padding: 20px 0;
+}
 
 p.cv {
   color: #333333;

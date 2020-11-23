@@ -23,6 +23,9 @@ const NavigationStyles = styled.div`
   .nav-item a {
     color: #aaaaaa;
   }
+  .nav-item  a.active {
+  color:red
+}
   .nav-item a:hover {
     text-decoration: none;
     color: #eeeeee;
@@ -63,7 +66,7 @@ export default function NavBar() {
           <Navbar collapseOnSelect bg="dark" variant="dark" expand="md">
             <Nav>
               <Nav.Item>
-                <Link to="/">Home</Link>
+                <Link to="/" activeStyle={{ color: "white" }}>Home</Link>
               </Nav.Item>
             </Nav>
             <Navbar.Toggle aria-controls="basic-navbar-nav" />

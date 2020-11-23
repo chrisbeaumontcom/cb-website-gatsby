@@ -1,14 +1,17 @@
 import React from "react"
-
-//import Layout from "../components/layout"
 import SEO from "../components/seo"
+import { Row } from "react-bootstrap";
 
-const NotFoundPage = () => (
-  <>
+export default function NotFoundPage(){
+  return(
+    <>
     <SEO title="404: Not found" />
-    <h1>404: Not Found</h1>
-    <p>You just hit a route that doesn&#39;t exist... the sadness.</p>
-  </>
-)
-
-export default NotFoundPage
+    <Row>
+      <div style={{minHeight: 250}}>
+      <h1>People it's a 404: Not Found</h1>
+      <p>Sorry, we can't find that page... exhale, and go to the menu above.</p>
+      </div>
+    </Row>
+    </>
+  )
+}

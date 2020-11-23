@@ -3,33 +3,16 @@ import { Link } from 'gatsby';
 import PropTypes from 'prop-types';
 import mag from '../assets/img/mag.png';
 import styled from "styled-components";
+import itemNav from '../utils/itemNav';
 
 const PrevAndNextStyles = styled.div`
   div.row {padding: 0;margin:0;font-size:0.8em}
   div img {margin-bottom: 0;}
-
 `
-
-function getNavValuesObj(items, id){
-  const obj = {};
-  for (var i = 0; i < items.length; i++) {
-    if (items[i] === id) {
-      const p = i === 0 ? items.length - 1 : i - 1;
-      obj.previous = items[p];
-
-      const n = i === items.length - 1 ? 0 : i + 1;
-      obj.next = items[n];
-
-      break;
-    }
-  }
-  return obj;
-}
 
 const PrevAndNext = props => {
   const artworkList = props.artworkList;
-  const current = props.current;
-  const pandnObj = getNavValuesObj(artworkList, current)
+  const pandnObj = itemNav(artworkList, props.current)
 
   return (
     <div className="container">
@@ -37,7 +20,7 @@ const PrevAndNext = props => {
       <div className="row" style={{padding:0}}>
         <div className="col-3 text-left">
           <Link to={`/detail/${pandnObj.previous}`} state={{ artworkList }}>
-          <span className="arrow">&laquo;</span> Prev
+            <span className="arrow">&laquo;</span> Prev
           </Link>
         </div>
         <div className="col-6 text-center">

@@ -5,6 +5,7 @@ import Img from 'gatsby-image';
 import styled from "styled-components";
 import PrevAndNext from '../components/PrevAndNext';
 import SEO from "../components/seo";
+import itemNav from '../utils/itemNav';
 
 const DetailStyles = styled.div`
   div.row {padding-top:2em}
@@ -31,19 +32,37 @@ const DetailStyles = styled.div`
   }
 `
 
+// function getNavValuesObj(items, id){
+//   const obj = {};
+//   for (var i = 0; i < items.length; i++) {
+//     if (items[i] === id) {
+//       const p = i === 0 ? items.length - 1 : i - 1;
+//       obj.previous = items[p];
+
+//       const n = i === items.length - 1 ? 0 : i + 1;
+//       obj.next = items[n];
+
+//       break;
+//     }
+//   }
+//   return obj;
+// }
+
 export default function SingleArtworkPage({data, location}){
 
   const artwork = data.artwork;
   const galleries = data.galleries.nodes;
   const artworkList = location.state.artworkList || [];
+  const pandnObj = itemNav(artworkList, artwork.slug.current)
   return (
     <>
       <SEO title={artwork.name} />
       <DetailStyles>
       <Row>
         <div className="col-lg-6 col-md-12 col-sm-12 col-xs-12 detailbox">
-        
-          <Img fluid={artwork.image.asset.fluid} alt={artwork.name} />
+          <Link to={`/detail/${pandnObj.next}`} state={{ artworkList }}>
+            <Img fluid={artwork.image.asset.fluid} alt={artwork.name} />
+          </Link>
           {(artworkList.length > 0) &&
           <PrevAndNext artworkList={artworkList} imgurl={artwork.image.asset.fluid.src} current={artwork.slug.current} />
           }

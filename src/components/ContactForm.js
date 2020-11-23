@@ -38,8 +38,6 @@ const ContactForm = () => {
             body: JSON.stringify(values)})
           .then(response => response.json())
           .then(data => {
-            console.log('URL:',process.env.GATSBY_CONTACT_API);
-            console.log('Data log:',data);
             if (!!data.sent) {
               sendForm("[Message Sent...Thanks.]");
               hideForm("formhide");
