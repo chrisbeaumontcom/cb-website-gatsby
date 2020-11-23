@@ -52,7 +52,7 @@ export default function SingleArtworkPage({data, location}){
 
   const artwork = data.artwork;
   const galleries = data.galleries.nodes;
-  const artworkList = location.state.artworkList || [];
+  const artworkList = location.state?.artworkList || [];
   const pandnObj = itemNav(artworkList, artwork.slug.current)
   return (
     <>
