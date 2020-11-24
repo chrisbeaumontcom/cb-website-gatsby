@@ -1,5 +1,5 @@
 import React from "react";
-import { Link , useStaticQuery, graphql } from "gatsby";
+import { Link, useStaticQuery, graphql } from "gatsby";
 import { Container, Navbar, Nav } from "react-bootstrap";
 import styled from 'styled-components';
 
@@ -45,7 +45,7 @@ export default function NavBar() {
           }
         }
       }
-      textpages: allSanityPost {
+      textpages: allSanityPost(filter: {show_in_nav: {eq: true}}) {
         nodes {
           id
           name

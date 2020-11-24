@@ -21,19 +21,21 @@ const serializers = {
 }
 
 export default function IndexPage ({data}) {
-  const itemlist = data.homeItemList.nodes.sort((a , b) => {
-    return a.order > b.order;
-  });
+  const homepage = data.homepage;
+  // const itemlist = data.homeItemList.nodes.sort((a , b) => {
+  //   return parseInt(a.order) - parseInt(b.order);
+  // });
   return (
     <>
       <SEO title="Welcome" />
       <HomeStyles>
 
         <div>
-          <h2>Hi people</h2>
+          <h2>{homepage.title}</h2>
+          <PortableText blocks={homepage._rawIntro} serializers={serializers} />
         </div>
 
-        {itemlist.map((el) => (
+        {homepage.homeitems.map((el) => (
           <Row key={el.id}>
             <div className="col-lg-3 col-md-3 col-sm-12 col-xs-12">
               <Img fluid={el.image.asset.fluid} alt={el.title} />
@@ -51,21 +53,40 @@ export default function IndexPage ({data}) {
   )
 }
 export const query = graphql`
-  query showHomeItems{
-    homeItemList:  allSanityHomeitem (filter: {show: {eq: true}}) {
-      nodes {
-        id
+  query getHomepage {
+    homepage: sanityHomepage(id: {eq: "-b8fafbd6-af36-5641-8194-9fc78fdc1d6a"}) {
+      title
+      _rawIntro(resolveReferences: {maxDepth: 5})
+      homeitems {
         title
+        show
         order
-        _rawContent(resolveReferences: {maxDepth: 30})
+        _rawContent(resolveReferences: {maxDepth: 5})
         image {
           asset {
-            fluid(maxWidth: 400) {
+            fluid(maxWidth: 700) {
               ...GatsbySanityImageFluid
             }
           }
         }
       }
     }
-}
+  }
 `
+  // query showHomeItems{
+  //   homeItemList:  allSanityHomeitem (filter: {show: {eq: true}}) {
+  //     nodes {
+  //       id
+  //       title
+  //       order
+  //       _rawContent(resolveReferences: {maxDepth: 30})
+  //       image {
+  //         asset {
+  //           fluid(maxWidth: 400) {
+  //             ...GatsbySanityImageFluid
+  //           }
+  //         }
+  //       }
+  //     }
+  //   }
+  // }

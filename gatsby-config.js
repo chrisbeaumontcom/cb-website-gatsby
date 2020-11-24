@@ -5,6 +5,7 @@ module.exports = {
     title: "Christopher Beaumont",
     subtitle: "Paintings",
     description: `Offical website for the artist painter Chris Beaumont.`,
+    version: "2.0",
     author: `@chrisbeaumontcom`,
   },
   plugins: [
