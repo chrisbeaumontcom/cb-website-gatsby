@@ -87,6 +87,11 @@ const Footer = () => {
     }
   `)
   const textpages = data.textpages.nodes;
+  // const handleOptOut = () => {
+  //   window.gaOptout();
+  //   window.alert('You have opted out of Google Analytics on this site.')
+  // }
+  // <li>Google Analytics: <button onClick={handleOptOut} className="btn btn-dark btn-sm">Opt out here</button></li>
   return (
     <FooterStyles>
       <Container fluid>

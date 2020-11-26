@@ -4,11 +4,6 @@ import  PortableText from '@sanity/block-content-to-react'
 import SEO from "../components/seo"
 import { Row } from "react-bootstrap"
 import Img from 'gatsby-image'
-import styled from 'styled-components';
-
-const HomeStyles = styled.div`
-  div.row{margin-bottom: 30px;}
-`;
 
 const serializers = {
   types: {
@@ -22,21 +17,17 @@ const serializers = {
 
 export default function IndexPage ({data}) {
   const homepage = data.homepage;
-  // const itemlist = data.homeItemList.nodes.sort((a , b) => {
-  //   return parseInt(a.order) - parseInt(b.order);
-  // });
+
   return (
     <>
       <SEO title="Welcome" />
-      <HomeStyles>
-
         <div>
           <h2>{homepage.title}</h2>
           <PortableText blocks={homepage._rawIntro} serializers={serializers} />
         </div>
 
         {homepage.homeitems.map((el) => (
-          <Row key={el.id}>
+          <Row key={el.id} style={{marginBottom: 20}}>
             <div className="col-lg-3 col-md-3 col-sm-12 col-xs-12">
               <Img fluid={el.image.asset.fluid} alt={el.title} />
             </div>
@@ -48,7 +39,7 @@ export default function IndexPage ({data}) {
             </div>
           </Row>
         ))}
-      </HomeStyles>
+      
     </>
   )
 }
@@ -73,20 +64,3 @@ export const query = graphql`
     }
   }
 `
-  // query showHomeItems{
-  //   homeItemList:  allSanityHomeitem (filter: {show: {eq: true}}) {
-  //     nodes {
-  //       id
-  //       title
-  //       order
-  //       _rawContent(resolveReferences: {maxDepth: 30})
-  //       image {
-  //         asset {
-  //           fluid(maxWidth: 400) {
-  //             ...GatsbySanityImageFluid
-  //           }
-  //         }
-  //       }
-  //     }
-  //   }
-  // }
