@@ -1,9 +1,9 @@
-import React from "react"
-import { Link, useStaticQuery, graphql } from "gatsby"
-import banner02 from "../../assets/img/layout/banner02lemons.jpg"
-import insta from "../../assets/img/soc-insta-30.png"
-import styled from "styled-components"
-import { Container,Row } from "react-bootstrap"
+import React from 'react';
+import { Link, useStaticQuery, graphql } from 'gatsby';
+import banner02 from '../../assets/img/layout/banner02lemons.jpg';
+import insta from '../../assets/img/soc-insta-30.png';
+import styled from 'styled-components';
+import { Container, Row } from 'react-bootstrap';
 
 const FooterStyles = styled.footer`
   h2 {
@@ -70,7 +70,7 @@ const FooterStyles = styled.footer`
 const Footer = () => {
   const data = useStaticQuery(graphql`
     query footerQuery {
-      textpages: allSanityPost(filter: {show_in_foot: {eq: true}}) {
+      textpages: allSanityPost(filter: { show_in_foot: { eq: true } }) {
         nodes {
           id
           name
@@ -85,7 +85,7 @@ const Footer = () => {
         }
       }
     }
-  `)
+  `);
   const textpages = data.textpages.nodes;
   // const handleOptOut = () => {
   //   window.gaOptout();
@@ -96,60 +96,58 @@ const Footer = () => {
     <FooterStyles>
       <Container fluid>
         <Container>
-            <Row>
-              <div className="col-lg-3 col-md-3 col-sm-3 col-xs-6 text-center footboximg">
-                <Link to="/">
-                  <img
-                    src={banner02}
-                    alt="Still life with Lemons"
-                    className="imgfooter"
-                  />
-                </Link>
-              </div>
-              <div className="col-lg-3 col-md-3 col-sm-3 col-xs-6 footbox">
-                <h2>Christopher Beaumont</h2>
-                <p>
-                  &copy;{new Date().getFullYear()} Christopher Beaumont
-                  <br />
-                  All rights reserved
-                  <br />
-                  Painted in Melbourne
-                  <br />
-                  Australia
-                </p>
-              </div>
-              <div className="col-lg-3 col-md-3 col-sm-3 col-xs-12" />
-              <div className="col-lg-3 col-md-3 col-sm-3 col-xs-12 footbox">
-                <h2>Questions?</h2>
-                <ul>
-                  <li>
-                    <Link to="/contact">Contact</Link>
+          <Row>
+            <div className="col-lg-3 col-md-3 col-sm-3 col-xs-6 text-center footboximg">
+              <Link to="/">
+                <img
+                  src={banner02}
+                  alt="Still life with Lemons"
+                  className="imgfooter"
+                />
+              </Link>
+            </div>
+            <div className="col-lg-3 col-md-3 col-sm-3 col-xs-6 footbox">
+              <h2>Christopher Beaumont</h2>
+              <p>
+                &copy;{new Date().getFullYear()} Christopher Beaumont
+                <br />
+                All rights reserved
+                <br />
+                Painted in Melbourne
+                <br />
+                Australia
+              </p>
+            </div>
+            <div className="col-lg-3 col-md-3 col-sm-3 col-xs-12" />
+            <div className="col-lg-3 col-md-3 col-sm-3 col-xs-12 footbox">
+              <h2>Questions?</h2>
+              <ul>
+                <li>
+                  <Link to="/contact">Contact</Link>
+                </li>
+                {textpages.map(el => (
+                  <li key={el.id}>
+                    <Link to={`/${el.slug.current}`} activeClassName="active">
+                      {el.name}
+                    </Link>
                   </li>
-                  {textpages.map((el) => (
-                    <li key={el.id}>
-                      <Link to={`/${el.slug.current}`}  activeClassName="active">{el.name}</Link>
-                    </li>                 
-                  ))}
-                  <li>
-                    Version: {data.site.siteMetadata.version} <br />
-                    Gatsby JS / Sanity CMS / Vercel / GitHub
-                  </li>
-                  <li>
-                    <a href="http://instagram.com/chrisbeaumontcom">
-                      <img
-                        src={insta}
-                        alt="Instagram"
-                        title="Instagram"
-                      />
-                    </a>
-                  </li>
-                </ul>
-              </div>
-            </Row>
+                ))}
+                <li>
+                  Version: {data.site.siteMetadata.version} <br />
+                  Gatsby JS / Sanity CMS / Vercel / GitHub
+                </li>
+                <li>
+                  <a href="http://instagram.com/chrisbeaumontcom">
+                    <img src={insta} alt="Instagram" title="Instagram" />
+                  </a>
+                </li>
+              </ul>
+            </div>
+          </Row>
         </Container>
-      </Container> 
-  </FooterStyles>
+      </Container>
+    </FooterStyles>
   );
-}
+};
 
-export default Footer
+export default Footer;

@@ -1,4 +1,4 @@
-import { createGlobalStyle } from "styled-components"
+import { createGlobalStyle } from 'styled-components';
 
 const GlobalStyles = createGlobalStyle`
   
@@ -21,6 +21,6 @@ ul.cv li {
 .form-group-address {
   display: none;
 }
+`;
 
-`
-export default GlobalStyles
+export default GlobalStyles;

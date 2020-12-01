@@ -1,7 +1,7 @@
-import { useState, useContext } from 'react'
-import GalleryContext from '../components/GalleryContext'
+import { useState, useContext } from 'react';
+import GalleryContext from '../components/GalleryContext';
 
-export default function useGallery(){
+export default function useGallery() {
   //const [gallery, setGallery] = useState([]);
   const [gallery, setGallery] = useContext(GalleryContext);
   //console.log(test);
@@ -15,5 +15,5 @@ export default function useGallery(){
   return {
     gallery,
     setGallery,
-  }
+  };
 }

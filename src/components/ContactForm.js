@@ -1,52 +1,59 @@
-import { Formik } from "formik";
-import fetch from "isomorphic-unfetch";
-import React, { useState } from "react";
+import { Formik } from 'formik';
+import fetch from 'isomorphic-unfetch';
+import React, { useState } from 'react';
 
 const ContactForm = () => {
-  const [sendProcess, sendForm] = useState("");
-  const [formwrap, hideForm] = useState("");
+  const [sendProcess, sendForm] = useState('');
+  const [formwrap, hideForm] = useState('');
 
   return (
     <React.Fragment>
       <p>{sendProcess}</p>
       <Formik
         className="start"
-        initialValues={{ Email: "", Name: "", Message: "", Phone: "", Address: "" }}
+        initialValues={{
+          Email: '',
+          Name: '',
+          Message: '',
+          Phone: '',
+          Address: '',
+        }}
         validate={values => {
           let errors = {};
           const rgx = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
           if (!values.Email) {
-            errors.Email = "Required";
+            errors.Email = 'Required';
           } else if (!rgx.test(values.Email)) {
-            errors.Email = "Invalid email address";
+            errors.Email = 'Invalid email address';
           }
           if (!values.Name) {
-            errors.Name = "Required";
+            errors.Name = 'Required';
           }
 
           return errors;
         }}
         onSubmit={(values, { setSubmitting }) => {
           setSubmitting(false);
-          sendForm("[sending...]");
+          sendForm('[sending...]');
 
           fetch(`${process.env.GATSBY_CONTACT_API}/contact.js`, {
-            method: "POST",
+            method: 'POST',
             headers: {
-              "Content-Type": "application/json"
+              'Content-Type': 'application/json',
             },
-            body: JSON.stringify(values)})
-          .then(response => response.json())
-          .then(data => {
-            if (!!data.sent) {
-              sendForm("[Message Sent...Thanks.]");
-              hideForm("formhide");
-            }
-            if (!!data.error) {
-              sendForm("error:" + data.error);
-            }
+            body: JSON.stringify(values),
           })
-          .catch(er => sendForm("[error sending form...]"));
+            .then(response => response.json())
+            .then(data => {
+              if (!!data.sent) {
+                sendForm('[Message Sent...Thanks.]');
+                hideForm('formhide');
+              }
+              if (!!data.error) {
+                sendForm('error:' + data.error);
+              }
+            })
+            .catch(er => sendForm('[error sending form...]'));
         }}
       >
         {({
@@ -56,7 +63,7 @@ const ContactForm = () => {
           handleChange,
           handleBlur,
           handleSubmit,
-          isSubmitting
+          isSubmitting,
           /* and other goodies */
         }) => (
           <form className="form" onSubmit={handleSubmit}>

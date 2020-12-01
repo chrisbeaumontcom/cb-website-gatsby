@@ -1,4 +1,4 @@
-export default function itemNav(items, id){
+export default function itemNav(items, id) {
   const obj = {};
   for (var i = 0; i < items.length; i++) {
     if (items[i] === id) {

@@ -1,8 +1,8 @@
-import React from "react"
-import portrait from "../assets/img/serge_photo_300x305.jpg"
-import styled from "styled-components"
-import ContactForm from '../components/ContactForm'
-import SEO from "../components/seo"
+import React from 'react';
+import portrait from '../assets/img/serge_photo_300x305.jpg';
+import styled from 'styled-components';
+import ContactForm from '../components/ContactForm';
+import SEO from '../components/seo';
 
 const ContactStyles = styled.div`
   img.port {
@@ -16,16 +16,14 @@ const ContactStyles = styled.div`
   .bord {
     border: 1px dotted blue;
   }
-`
+`;
 
-export default function ContactPage (){
-
+export default function ContactPage() {
   return (
     <ContactStyles>
       <SEO title="Contact" />
       <div className="row">
         <div className="col">
-        
           <h2>Contact</h2>
         </div>
       </div>
@@ -34,9 +32,13 @@ export default function ContactPage (){
           <ContactForm />
         </div>
         <div className="col-lg-6 text-center">
-          <img className="port" src={portrait} alt="Portrait of CB by Serge Thoman" />
+          <img
+            className="port"
+            src={portrait}
+            alt="Portrait of CB by Serge Thoman"
+          />
         </div>
       </div>
     </ContactStyles>
-  )
+  );
 }

@@ -1,18 +1,18 @@
-import React from "react";
-import { Link, useStaticQuery, graphql } from "gatsby";
-import { Container, Navbar, Nav } from "react-bootstrap";
+import React from 'react';
+import { Link, useStaticQuery, graphql } from 'gatsby';
+import { Container, Navbar, Nav } from 'react-bootstrap';
 import styled from 'styled-components';
 
 const NavigationStyles = styled.div`
   .navbar {
-  background-color:#343a40;
-  color: #ffffff;
+    background-color: #343a40;
+    color: #ffffff;
   }
   .navcontainer {
     background-color: #343a40;
-  }  
+  }
   .navbar a {
-  color: #ffffff
+    color: #ffffff;
   }
   .navbar-brand {
     font-size: 1em;
@@ -23,9 +23,9 @@ const NavigationStyles = styled.div`
   .nav-item a {
     color: #aaaaaa;
   }
-  .nav-item  a.active {
-  color:red
-}
+  .nav-item a.active {
+    color: red;
+  }
   .nav-item a:hover {
     text-decoration: none;
     color: #eeeeee;
@@ -33,7 +33,6 @@ const NavigationStyles = styled.div`
 `;
 
 export default function NavBar() {
-
   const data = useStaticQuery(graphql`
     query navQuery {
       collections: allSanityGallery {
@@ -45,7 +44,7 @@ export default function NavBar() {
           }
         }
       }
-      textpages: allSanityPost(filter: {show_in_nav: {eq: true}}) {
+      textpages: allSanityPost(filter: { show_in_nav: { eq: true } }) {
         nodes {
           id
           name
@@ -55,7 +54,7 @@ export default function NavBar() {
         }
       }
     }
-  `)
+  `);
 
   const galleries = data.collections.nodes;
   const textpages = data.textpages.nodes;
@@ -66,7 +65,9 @@ export default function NavBar() {
           <Navbar collapseOnSelect bg="dark" variant="dark" expand="md">
             <Nav>
               <Nav.Item>
-                <Link to="/" activeStyle={{ color: "white" }}>Home</Link>
+                <Link to="/" activeStyle={{ color: 'white' }}>
+                  Home
+                </Link>
               </Nav.Item>
             </Nav>
             <Navbar.Toggle aria-controls="basic-navbar-nav" />
@@ -75,18 +76,27 @@ export default function NavBar() {
               className="justify-content-end"
             >
               <Nav>
-                {galleries.map((el) => (
+                {galleries.map(el => (
                   <Nav.Item key={el.id}>
-                    <Link to={`/gallery/${el.slug.current}`} activeClassName="active">{el.name}</Link>
+                    <Link
+                      to={`/gallery/${el.slug.current}`}
+                      activeClassName="active"
+                    >
+                      {el.name}
+                    </Link>
                   </Nav.Item>
                 ))}
-                {textpages.map((el) => (
+                {textpages.map(el => (
                   <Nav.Item key={el.id}>
-                    <Link to={`/${el.slug.current}`} activeClassName="active">{el.name}</Link>
+                    <Link to={`/${el.slug.current}`} activeClassName="active">
+                      {el.name}
+                    </Link>
                   </Nav.Item>
                 ))}
                 <Nav.Item>
-                  <Link to="/contact" activeClassName="active">Contact</Link>
+                  <Link to="/contact" activeClassName="active">
+                    Contact
+                  </Link>
                 </Nav.Item>
               </Nav>
             </Navbar.Collapse>
