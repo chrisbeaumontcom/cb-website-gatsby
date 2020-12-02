@@ -1,9 +1,9 @@
-import React from "react";
-import { graphql } from "gatsby";
-import PortableText from "@sanity/block-content-to-react";
-import SEO from "../components/seo";
-import { Row } from "react-bootstrap";
-import Img from "gatsby-image";
+import React from 'react';
+import { Link, graphql } from 'gatsby';
+import PortableText from '@sanity/block-content-to-react';
+import SEO from '../components/seo';
+import { Row } from 'react-bootstrap';
+import Img from 'gatsby-image';
 
 const serializers = {
   types: {
@@ -12,6 +12,22 @@ const serializers = {
         <code>{props.node.code}</code>
       </pre>
     ),
+  },
+  marks: {
+    internalLink: ({ mark, children }) => {
+      const { href } = mark;
+      return <Link to={href}>{children}</Link>;
+    },
+    link: ({ mark, children }) => {
+      const { blank, href } = mark;
+      return blank ? (
+        <a href={href} target="_blank" rel="noopener noreferrer">
+          {children}
+        </a>
+      ) : (
+        <a href={href}>{children}</a>
+      );
+    },
   },
 };
 
