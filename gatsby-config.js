@@ -1,23 +1,23 @@
-require('dotenv').config()
+require('dotenv').config();
 
 module.exports = {
   siteMetadata: {
-    title: "Christopher Beaumont",
-    subtitle: "Paintings",
+    title: 'Christopher Beaumont',
+    subtitle: 'Paintings',
     description: `Offical website for the artist painter Chris Beaumont.`,
-    version: "2.0",
+    version: '2.0',
     author: `@chrisbeaumontcom`,
   },
   plugins: [
     `gatsby-plugin-react-helmet`,
     {
-      resolve:`gatsby-source-sanity`,
+      resolve: `gatsby-source-sanity`,
       options: {
         projectId: `1to5m8nu`,
         dataset: `production`,
         watchMode: true,
-        token: process.env.SANITY_TOKEN_V2
-      }
+        token: process.env.SANITY_TOKEN_V2,
+      },
     },
     {
       resolve: `gatsby-source-filesystem`,
@@ -44,10 +44,10 @@ module.exports = {
       resolve: `gatsby-plugin-google-fonts`,
       options: {
         fonts: [
-          `quicksand\:300,400,500,700` // you can also specify font weights and styles
+          `quicksand\:300,400,500,700`, // you can also specify font weights and styles
         ],
-        display: 'swap'
-      }
+        display: 'swap',
+      },
     },
     {
       resolve: `gatsby-plugin-google-analytics`,
@@ -61,7 +61,7 @@ module.exports = {
         // Setting this parameter is also optional
         respectDNT: true,
         // Avoids sending pageview hits from custom paths
-        exclude: ["/preview/**", "/do-not-track/me/too/"],
+        exclude: ['/preview/**', '/do-not-track/me/too/'],
         // Delays sending pageview hits on route update (in milliseconds)
         pageTransitionDelay: 0,
         // Enables Google Optimize using your container Id
@@ -77,9 +77,9 @@ module.exports = {
         //siteSpeedSampleRate: 10,
         //cookieDomain: "example.com",
       },
-    }
+    },
     // this (optional) plugin enables Progressive Web App + Offline functionality
     // To learn more, visit: https://gatsby.dev/offline
     // `gatsby-plugin-offline`,
   ],
-}
+};
