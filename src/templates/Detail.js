@@ -39,21 +39,27 @@ export default function SingleArtworkPage({ data, location }) {
   const galleries = data.galleries.nodes;
   const artworkList = location.state?.artworkList || [];
   const pandnObj = itemNav(artworkList, artwork.slug.current);
+
   return (
     <>
       <SEO title={artwork.name} />
       <DetailStyles>
         <Row>
           <div className="col-lg-6 col-md-12 col-sm-12 col-xs-12 detailbox">
-            <Link to={`/detail/${pandnObj.next}`} state={{ artworkList }}>
-              <Img fluid={artwork.image.asset.fluid} alt={artwork.name} />
-            </Link>
             {artworkList.length > 0 && (
-              <PrevAndNext
-                artworkList={artworkList}
-                imgurl={artwork.image.asset.fluid.src}
-                current={artwork.slug.current}
-              />
+              <div>
+                <Link to={`/detail/${pandnObj.next}`} state={{ artworkList }}>
+                  <Img fluid={artwork.image.asset.fluid} alt={artwork.name} />
+                </Link>
+                <PrevAndNext
+                  artworkList={artworkList}
+                  imgurl={artwork.image.asset.fluid.src}
+                  current={artwork.slug.current}
+                />
+              </div>
+            )}
+            {artworkList.length === 0 && (
+              <Img fluid={artwork.image.asset.fluid} alt={artwork.name} />
             )}
           </div>
           <div className="col-lg-6 col-md-12 col-sm-12 col-xs-12 detailtext">
