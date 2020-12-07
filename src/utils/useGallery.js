@@ -1,19 +1,20 @@
-import { useState, useContext } from 'react';
+import { useContext } from 'react';
 import GalleryContext from '../components/GalleryContext';
 
 export default function useGallery() {
-  //const [gallery, setGallery] = useState([]);
-  const [gallery, setGallery] = useContext(GalleryContext);
-  //console.log(test);
-  // function setGallery(newGallery){
-  //   setGallery([...gallery, newGallery]);
-  // }
-  // function clearGallery(){
-  //   setGallery([...gallery, gallery.splice(0,gallery.length)]);
-  // }
+  const [galleryOptions, setgalleryOptions] = useContext(GalleryContext);
 
+  function setGaOptIn() {
+    galleryOptions.optinGA = false;
+    setgalleryOptions(galleryOptions);
+    console.log('galleryOptions', galleryOptions);
+    if (typeof window.gaOptout !== 'undefined') {
+      window.gaOptout();
+    } else {
+      console.log('gaOptout undefined');
+    }
+  }
   return {
-    gallery,
-    setGallery,
+    setGaOptIn,
   };
 }

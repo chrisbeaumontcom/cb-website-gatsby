@@ -1,9 +1,10 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { Link, useStaticQuery, graphql } from 'gatsby';
 import banner02 from '../../assets/img/layout/banner02lemons.jpg';
 import insta from '../../assets/img/soc-insta-30.png';
 import styled from 'styled-components';
 import { Container, Row } from 'react-bootstrap';
+import GalleryContext from '../GalleryContext';
 
 const FooterStyles = styled.footer`
   h2 {
@@ -86,12 +87,10 @@ const Footer = () => {
       }
     }
   `);
-  const textpages = data.textpages.nodes;
-  // const handleOptOut = () => {
-  //   window.gaOptout();
-  //   window.alert('You have opted out of Google Analytics on this site.')
-  // }
-  // <li>Google Analytics: <button onClick={handleOptOut} className="btn btn-dark btn-sm">Opt out here</button></li>
+  const [gaOptin] = useContext(GalleryContext);
+  const ga = gaOptin ? 'on' : 'off';
+  //const textpages = data.textpages.nodes;
+
   return (
     <FooterStyles>
       <Container fluid>
@@ -125,16 +124,14 @@ const Footer = () => {
                 <li>
                   <Link to="/contact">Contact</Link>
                 </li>
-                {textpages.map(el => (
-                  <li key={el.id}>
-                    <Link to={`/${el.slug.current}`} activeClassName="active">
-                      {el.name}
-                    </Link>
-                  </li>
-                ))}
+                <li>
+                  <Link to="/privacy">Privacy</Link>
+                </li>
+
                 <li>
                   Version: {data.site.siteMetadata.version} <br />
-                  Gatsby JS / Sanity CMS / Vercel / GitHub
+                  Gatsby JS / Sanity CMS / Vercel / GitHub <br />
+                  Google Analytics is {ga}
                 </li>
                 <li>
                   <a href="http://instagram.com/chrisbeaumontcom">
@@ -151,3 +148,11 @@ const Footer = () => {
 };
 
 export default Footer;
+
+// {textpages.map(el => (
+//   <li key={'foot' + el.id}>
+//     <Link to={`/${el.slug.current}`} activeClassName="active">
+//       {el.name}
+//     </Link>
+//   </li>
+// ))}

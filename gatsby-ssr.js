@@ -8,12 +8,12 @@
 import React from 'react';
 import Layout from './src/components/Layout/Layout';
 import './node_modules/bootstrap/dist/css/bootstrap.css';
-//import { GalleryProvider } from './src/components/GalleryContext';
+import { GalleryProvider } from './src/components/GalleryContext';
 
 export function wrapPageElement({ element, props }) {
   return <Layout {...props}>{element}</Layout>;
 }
 
-// export function wrapRootElement({ element }) {
-//   return <GalleryProvider>{element}</GalleryProvider>;
-// }
+export function wrapRootElement({ element }) {
+  return <GalleryProvider>{element}</GalleryProvider>;
+}
