@@ -12,7 +12,10 @@ export default function PrivacyPage() {
         {gaOptin && (
           <button
             className="btn btn-primary btn-sm"
-            onClick={() => setgaOptin(false)}
+            onClick={() => {
+              setgaOptin(false);
+              window.gaOptout();
+            }}
           >
             Turn off
           </button>
