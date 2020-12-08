@@ -1,26 +1,35 @@
 import React, { useContext } from 'react';
 import GalleryContext from '../components/GalleryContext';
+import Cookies from 'universal-cookie';
 
 export default function PrivacyPage() {
   const [gaOptin, setgaOptin] = useContext(GalleryContext);
+
+  const cookies = new Cookies();
+  const disableStr = 'ga-disable-' + process.env.ANALYTICS_TRACKING_ID;
+  const gaCookie = !!cookies.get(disableStr);
+  console.log('gaCookie:', gaCookie);
+  const ga = gaOptin && !gaCookie;
 
   return (
     <>
       <h2>Privacy Policy</h2>
       <p>This site uses Google Analytics but with Anonymized IP address.</p>
       <p>
-        {gaOptin && (
+        {ga && (
           <button
             className="btn btn-primary btn-sm"
             onClick={() => {
               setgaOptin(false);
-              window.gaOptout();
+              if (typeof window.gaOptout !== 'undefined') {
+                window.gaOptout();
+              }
             }}
           >
             Turn off
           </button>
         )}{' '}
-        Google Analytics {!gaOptin && <span> Is Off</span>}
+        Google Analytics {!ga && <span> Is Off</span>}
       </p>
       <p>This site does not use Facebook Pixel.</p>
 
@@ -60,3 +69,14 @@ export default function PrivacyPage() {
     </>
   );
 }
+
+// <p>
+//   <button
+//     className="btn btn-primary btn-sm"
+//     onClick={() => {
+//       gaOptoutTest();
+//     }}
+//   >
+//     Test Cookie
+//   </button>
+// </p>

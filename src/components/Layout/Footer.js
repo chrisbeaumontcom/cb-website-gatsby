@@ -5,6 +5,7 @@ import insta from '../../assets/img/soc-insta-30.png';
 import styled from 'styled-components';
 import { Container, Row } from 'react-bootstrap';
 import GalleryContext from '../GalleryContext';
+import Cookies from 'universal-cookie';
 
 const FooterStyles = styled.footer`
   h2 {
@@ -88,9 +89,12 @@ const Footer = () => {
     }
   `);
   const [gaOptin] = useContext(GalleryContext);
-  const ga = gaOptin ? 'on' : 'off';
-  //const textpages = data.textpages.nodes;
 
+  //const textpages = data.textpages.nodes;
+  const cookies = new Cookies();
+  const disableStr = 'ga-disable-' + process.env.ANALYTICS_TRACKING_ID;
+  const gaCookie = !!cookies.get(disableStr);
+  const ga = gaOptin || gaCookie ? 'on' : 'off';
   return (
     <FooterStyles>
       <Container fluid>
