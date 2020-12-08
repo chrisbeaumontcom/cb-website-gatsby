@@ -4,14 +4,10 @@ import Cookies from 'universal-cookie';
 
 export default function PrivacyPage() {
   const [gaOptout, setgaOptout] = useContext(GalleryContext);
-
   const cookies = new Cookies();
   const disableStr =
     'ga-disable-' + (process.env.ANALYTICS_TRACKING_ID || 'test');
-  //cookies.remove(disableStr);
   const gaCookie = (cookies.get(disableStr) || 'false') === 'true';
-
-  console.log('gaCookie:', gaCookie, 'gaOptout:', gaOptout);
   const gaOptin = !(gaOptout || gaCookie);
 
   return (
@@ -74,14 +70,3 @@ export default function PrivacyPage() {
     </>
   );
 }
-
-// <p>
-//   <button
-//     className="btn btn-primary btn-sm"
-//     onClick={() => {
-//       gaOptoutTest();
-//     }}
-//   >
-//     Test Cookie
-//   </button>
-// </p>
