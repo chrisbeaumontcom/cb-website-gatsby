@@ -3,9 +3,9 @@ import React, { useState } from 'react';
 const GalleryContext = React.createContext();
 
 export function GalleryProvider({ children }) {
-  const [gaOptin, setgaOptin] = useState(true);
+  const [gaOptout, setgaOptout] = useState(false);
   return (
-    <GalleryContext.Provider value={[gaOptin, setgaOptin]}>
+    <GalleryContext.Provider value={[gaOptout, setgaOptout]}>
       {children}
     </GalleryContext.Provider>
   );
