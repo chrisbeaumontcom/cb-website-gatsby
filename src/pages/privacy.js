@@ -6,19 +6,21 @@ export default function PrivacyPage() {
   const [gaOptout, setgaOptout] = useContext(GalleryContext);
 
   const cookies = new Cookies();
-  const disableStr = 'ga-disable-' + process.env.ANALYTICS_TRACKING_ID;
+  const disableStr =
+    'ga-disable-' + (process.env.ANALYTICS_TRACKING_ID || 'test');
   //cookies.remove(disableStr);
   const gaCookie = (cookies.get(disableStr) || 'false') === 'true';
 
   console.log('gaCookie:', gaCookie, 'gaOptout:', gaOptout);
-  const gaOptin = !gaOptout && !gaCookie;
+  const gaOptin = !(gaOptout || gaCookie);
 
   return (
     <>
       <h2>Privacy Policy</h2>
-      <p>This site uses Google Analytics but with Anonymized IP address.</p>
-      <p>
-        {gaOptin && (
+      {gaOptin && (
+        <p>
+          This site uses Google Analytics but with Anonymized IP address.
+          <br />
           <button
             className="btn btn-primary btn-sm"
             onClick={() => {
@@ -30,13 +32,12 @@ export default function PrivacyPage() {
               }
             }}
           >
-            Turn off
-          </button>
-        )}{' '}
-        Google Analytics {!gaOptin && <span> Is Off</span>}
-      </p>
+            Turn off Google Analytics
+          </button>{' '}
+        </p>
+      )}
+      {!gaOptin && <p>Google Analytics is turned off on this site.</p>}
       <p>This site does not use Facebook Pixel.</p>
-
       <p>
         See{' '}
         <a

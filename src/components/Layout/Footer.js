@@ -91,9 +91,10 @@ const Footer = () => {
   const [gaOptout] = useContext(GalleryContext);
   //const textpages = data.textpages.nodes;
   const cookies = new Cookies();
-  const disableStr = 'ga-disable-' + process.env.ANALYTICS_TRACKING_ID;
+  const disableStr =
+    'ga-disable-' + (process.env.ANALYTICS_TRACKING_ID || 'test');
   const gaCookie = (cookies.get(disableStr) || 'false') === 'true';
-  const gaOptin = !gaOptout && !gaCookie ? 'on' : 'off';
+  const gaOptoutStr = gaOptout || gaCookie ? 'Google Analytics is off' : '';
   return (
     <FooterStyles>
       <Container fluid>
@@ -133,7 +134,7 @@ const Footer = () => {
                 <li>
                   Version: {data.site.siteMetadata.version} <br />
                   Gatsby JS / Sanity CMS / Vercel / GitHub <br />
-                  Google Analytics is {gaOptin}
+                  {gaOptoutStr}
                 </li>
                 <li>
                   <a href="http://instagram.com/chrisbeaumontcom">
