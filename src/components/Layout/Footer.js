@@ -127,7 +127,6 @@ const Footer = () => {
                 <li>
                   <Link to="/privacy">Privacy</Link>
                 </li>
-
                 <li>
                   Version: {data.site.siteMetadata.version} <br />
                   Gatsby JS / Sanity CMS / Vercel / GitHub <br />

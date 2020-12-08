@@ -75,7 +75,7 @@ module.exports = {
         // Any additional optional fields
         //sampleRate: 5,
         //siteSpeedSampleRate: 10,
-        cookieDomain: 'vercel.app',
+        cookieDomain: 'chrisbeaumont.com',
       },
     },
     // this (optional) plugin enables Progressive Web App + Offline functionality
