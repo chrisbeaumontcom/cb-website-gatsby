@@ -93,15 +93,11 @@ const Footer = () => {
   const cookies = new Cookies();
   const disableStr =
     'ga-disable-' + (process.env.ANALYTICS_TRACKING_ID || 'test');
-  const gaCookie = (cookies.get(disableStr) || 'false') === 'true';
-  const gaOptoutStr = gaOptout || gaCookie ? 'Google Analytics is off' : '';
-  console.log('gaDisable:', window[disableStr] === !0);
-  if (window.document) {
-    console.log(
-      'gaDisableCookie:',
-      window.document.cookie.indexOf(disableStr + '=true') > -1
-    );
-  }
+  const gaCookie = cookies.get(disableStr) || 'false';
+  const gaOptoutStr =
+    gaOptout || gaCookie === 'true' ? 'Google Analytics is off' : '';
+  console.log('Footer:', 'gaCookie:', gaCookie, 'gaOptout', gaOptout);
+
   return (
     <FooterStyles>
       <Container fluid>
