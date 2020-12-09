@@ -6,7 +6,7 @@ export default function PrivacyPage() {
   const [gaOptout, setgaOptout] = useContext(GalleryContext);
   const cookies = new Cookies();
   const disableStr =
-    'ga-disable-' + (process.env.ANALYTICS_TRACKING_ID || 'test');
+    'ga-disable-' + (process.env.GATSBY_ANALYTICS_TRACKING_ID || 'test');
   const gaCookie = (cookies.get(disableStr) || 'false') === 'true';
   const gaOptin = !(gaOptout || gaCookie);
 

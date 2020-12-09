@@ -92,7 +92,7 @@ const Footer = () => {
   //const textpages = data.textpages.nodes;
   const cookies = new Cookies();
   const disableStr =
-    'ga-disable-' + (process.env.ANALYTICS_TRACKING_ID || 'test');
+    'ga-disable-' + (process.env.GATSBY_ANALYTICS_TRACKING_ID || 'test');
   const gaCookie = (cookies.get(disableStr) || 'false') === 'true';
   const gaOptoutStr = gaOptout || gaCookie ? 'Google Analytics is off' : '';
   return (
