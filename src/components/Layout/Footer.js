@@ -1,10 +1,10 @@
-import React, { useContext } from 'react';
+import React from 'react';
 import { Link, useStaticQuery, graphql } from 'gatsby';
 import banner02 from '../../assets/img/layout/banner02lemons.jpg';
 import insta from '../../assets/img/soc-insta-30.png';
 import styled from 'styled-components';
 import { Container, Row } from 'react-bootstrap';
-import GalleryContext from '../GalleryContext';
+//import GalleryContext from '../GalleryContext';, { useContext }
 import Cookies from 'universal-cookie';
 
 const FooterStyles = styled.footer`
@@ -88,7 +88,7 @@ const Footer = () => {
       }
     }
   `);
-  const [gaOptout] = useContext(GalleryContext);
+  //const [gaOptout] = useContext(GalleryContext);
 
   //const textpages = data.textpages.nodes;
   const cookies = new Cookies();

@@ -1,9 +1,9 @@
-import React, { useContext } from 'react';
-import GalleryContext from '../components/GalleryContext';
+import React from 'react';
+//import GalleryContext from '../components/GalleryContext';, { useContext }
 import Cookies from 'universal-cookie';
 
 export default function PrivacyPage() {
-  const [gaOptout, setgaOptout] = useContext(GalleryContext);
+  //const [gaOptout, setgaOptout] = useContext(GalleryContext);
   const cookies = new Cookies();
   const disableStr =
     'ga-disable-' + (process.env.GATSBY_ANALYTICS_TRACKING_ID || 'test');
@@ -20,7 +20,7 @@ export default function PrivacyPage() {
           <button
             className="btn btn-primary btn-sm"
             onClick={() => {
-              setgaOptout(true);
+              //setgaOptout(true);
               if (typeof window.gaOptout !== 'undefined') {
                 window.gaOptout();
               } else {
