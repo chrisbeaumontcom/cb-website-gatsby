@@ -7,8 +7,8 @@ export default function PrivacyPage() {
   const cookies = new Cookies();
   const disableStr =
     'ga-disable-' + (process.env.ANALYTICS_TRACKING_ID || 'test');
-  const gaCookie = (cookies.get(disableStr) || 'false') === 'true';
-  const gaOptin = !(gaOptout || gaCookie);
+  const gaCookie = cookies.get(disableStr);
+  const gaOptin = !(gaCookie === 'true'); //gaOptout ||
 
   return (
     <>

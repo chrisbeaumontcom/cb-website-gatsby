@@ -89,17 +89,15 @@ const Footer = () => {
     }
   `);
   const [gaOptout] = useContext(GalleryContext);
+
   //const textpages = data.textpages.nodes;
   const cookies = new Cookies();
   const disableStr =
     'ga-disable-' + (process.env.ANALYTICS_TRACKING_ID || 'test');
-  const gaCookie = cookies.get(disableStr) || 'false';
-  const gaOptoutStr =
-    gaOptout || gaCookie === 'true' ? 'Google Analytics is off' : '';
-  console.log('Footer:', 'gaCookie:', gaCookie, 'gaOptout', gaOptout);
-  if (window) {
-    console.log('Window str:', window[disableStr] === !0);
-  }
+  const gaCookie = cookies.get(disableStr);
+  const gaOptoutStr = gaCookie === 'true' ? 'Google Analytics is off' : '';
+  //console.log('Footer:', 'gaCookie:', gaCookie, 'gaOptout', gaOptout);
+
   return (
     <FooterStyles>
       <Container fluid>
