@@ -5,7 +5,7 @@ import insta from '../../assets/img/soc-insta-30.png';
 import styled from 'styled-components';
 import { Container, Row } from 'react-bootstrap';
 import GalleryContext from '../GalleryContext';
-import Cookies from 'universal-cookie';
+//import Cookies from 'universal-cookie';
 
 const FooterStyles = styled.footer`
   h2 {
@@ -90,11 +90,17 @@ const Footer = () => {
   `);
   const [gaOptout] = useContext(GalleryContext);
   //const textpages = data.textpages.nodes;
-  const cookies = new Cookies();
+  //const cookies = new Cookies();
   const disableStr =
     'ga-disable-' + (process.env.ANALYTICS_TRACKING_ID || 'test');
-  const gaCookie = (cookies.get(disableStr) || 'false') === 'true';
+  const gaCookie = document.cookie.indexOf(disableStr + '=true') > -1; //(cookies.get(disableStr) || 'false') === 'true';
   const gaOptoutStr = gaOptout || gaCookie ? 'Google Analytics is off' : '';
+  console.log('gaDisable:', window[disableStr] === !0);
+  console.log(
+    'gaDisableCookie:',
+    document.cookie.indexOf(disableStr + '=true') > -1
+  );
+
   return (
     <FooterStyles>
       <Container fluid>
