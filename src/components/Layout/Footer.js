@@ -97,7 +97,9 @@ const Footer = () => {
   const gaOptoutStr =
     gaOptout || gaCookie === 'true' ? 'Google Analytics is off' : '';
   console.log('Footer:', 'gaCookie:', gaCookie, 'gaOptout', gaOptout);
-
+  if (window) {
+    console.log('Window str:', window[disableStr] === !0);
+  }
   return (
     <FooterStyles>
       <Container fluid>
