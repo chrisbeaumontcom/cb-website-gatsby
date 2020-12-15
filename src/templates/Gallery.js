@@ -1,6 +1,5 @@
 import React from 'react';
 import { Link, graphql } from 'gatsby';
-import { Row } from 'react-bootstrap';
 import Img from 'gatsby-image';
 import SEO from '../components/seo';
 import styled from 'styled-components';
@@ -45,7 +44,7 @@ export default function SingleGalleryPage({ data }) {
       <SEO title={name} />
       <GalleryStyles>
         <h2>{name}</h2>
-        <Row>
+        <div className="row">
           {artworks.map((el, index) => (
             <div className="col-lg-4 col-md-6 col-sm-12 col-xs-12" key={index}>
               <div className="itembox">
@@ -61,7 +60,7 @@ export default function SingleGalleryPage({ data }) {
               </div>
             </div>
           ))}
-        </Row>
+        </div>
       </GalleryStyles>
     </>
   );
