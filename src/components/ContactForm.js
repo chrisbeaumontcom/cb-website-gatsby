@@ -1,13 +1,13 @@
+import React, { useState } from 'react';
 import { Formik } from 'formik';
 import fetch from 'isomorphic-unfetch';
-import React, { useState } from 'react';
 
 const ContactForm = () => {
   const [sendProcess, sendForm] = useState('');
   const [formwrap, hideForm] = useState('');
 
   return (
-    <React.Fragment>
+    <>
       <p>{sendProcess}</p>
       <Formik
         className="start"
@@ -33,7 +33,7 @@ const ContactForm = () => {
           return errors;
         }}
         onSubmit={(values, { setSubmitting }) => {
-          setSubmitting(false);
+          hideForm('formhide');
           sendForm('[sending...]');
 
           fetch(`${process.env.GATSBY_CONTACT_API}/contact.js`, {
@@ -47,13 +47,16 @@ const ContactForm = () => {
             .then(data => {
               if (!!data.sent) {
                 sendForm('[Message Sent...Thanks.]');
-                hideForm('formhide');
               }
               if (!!data.error) {
                 sendForm('error:' + data.error);
               }
+              setSubmitting(false);
             })
-            .catch(er => sendForm('[error sending form...]'));
+            .catch(er => {
+              sendForm('[error sending form...]');
+              setSubmitting(false);
+            });
         }}
       >
         {({
@@ -133,6 +136,7 @@ const ContactForm = () => {
                 >
                   Submit
                 </button>
+                <p>&nbsp;</p>
               </div>
             </div>
           </form>
@@ -143,7 +147,7 @@ const ContactForm = () => {
           display: none;
         }
       `}</style>
-    </React.Fragment>
+    </>
   );
 };
 export default ContactForm;

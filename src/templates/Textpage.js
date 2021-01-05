@@ -4,7 +4,7 @@ import styled from 'styled-components';
 import PortableText from '@sanity/block-content-to-react';
 import SEO from '../components/seo';
 
-const CvStyles = styled.div`
+const PageStyles = styled.div`
   h3 {
     color: #333333;
     font-size: 1.4rem;
@@ -40,10 +40,17 @@ export default function TextPage({ data }) {
   return (
     <>
       <SEO title={textpage.name} />
-      <CvStyles>
-        <h2>{textpage.name}</h2>
-        <PortableText blocks={textpage._rawContent} serializers={serializers} />
-      </CvStyles>
+      <div className="row">
+        <div className="col">
+          <PageStyles>
+            <h2>{textpage.name}</h2>
+            <PortableText
+              blocks={textpage._rawContent}
+              serializers={serializers}
+            />
+          </PageStyles>
+        </div>
+      </div>
     </>
   );
 }

@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'gatsby';
-import { Container, Row, Carousel } from 'react-bootstrap';
+import { Carousel } from 'react-bootstrap';
 import banner01 from '../../assets/img/layout/banner01zucchinis.jpg';
 import banner02 from '../../assets/img/layout/banner02lemons.jpg';
 import banner03 from '../../assets/img/layout/banner03artichokes.jpg';
@@ -63,9 +63,9 @@ export default function Header(props) {
 
   return (
     <HeaderStyles>
-      <Container fluid>
-        <Container>
-          <Row>
+      <div className="container-fluid">
+        <div className="container">
+          <div className="row">
             <div className="col-lg-8 col-md-8 col-sm-6 col-xs-12 banner">
               <Link to="/">
                 <h1>{props.title}</h1>
@@ -105,9 +105,9 @@ export default function Header(props) {
                 </Carousel.Item>
               </Carousel>
             </div>
-          </Row>
-        </Container>
-      </Container>
+          </div>
+        </div>
+      </div>
     </HeaderStyles>
   );
 }

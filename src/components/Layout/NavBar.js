@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link, useStaticQuery, graphql } from 'gatsby';
-import { Container, Navbar, Nav } from 'react-bootstrap';
+import { Navbar, Nav } from 'react-bootstrap';
 import styled from 'styled-components';
 
 const NavigationStyles = styled.div`
@@ -60,8 +60,11 @@ export default function NavBar() {
   const textpages = data.textpages.nodes;
   return (
     <NavigationStyles>
-      <Container fluid style={{ backgroundColor: `#343a40`, padding: `0` }}>
-        <Container>
+      <div
+        className="container-fluid"
+        style={{ backgroundColor: `#343a40`, padding: `0` }}
+      >
+        <div className="container">
           <Navbar collapseOnSelect bg="dark" variant="dark" expand="md">
             <Nav>
               <Nav.Item>
@@ -101,8 +104,8 @@ export default function NavBar() {
               </Nav>
             </Navbar.Collapse>
           </Navbar>
-        </Container>
-      </Container>
+        </div>
+      </div>
     </NavigationStyles>
   );
 }
