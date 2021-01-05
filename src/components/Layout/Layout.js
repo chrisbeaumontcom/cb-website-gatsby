@@ -20,7 +20,7 @@ export default function Layout({ children }) {
     `
   );
   return (
-    <div>
+    <>
       <GlobalStyles />
       <NavBar />
       <Header
@@ -29,6 +29,6 @@ export default function Layout({ children }) {
       />
       <div className="container">{children}</div>
       <Footer />
-    </div>
+    </>
   );
 }
