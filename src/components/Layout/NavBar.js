@@ -60,6 +60,15 @@ export default function NavBar() {
                   </Link>
                 </Nav.Item>
               ))}
+              <Nav.Item>
+                <a
+                  href="https://prints.chrisbeaumont.com/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  Print Shop
+                </a>
+              </Nav.Item>
               {textpages.map(el => (
                 <Nav.Item key={el.id}>
                   <Link to={`/${el.slug.current}`} activeClassName="active">
